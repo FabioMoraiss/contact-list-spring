@@ -1,113 +1,124 @@
-# Contact List
+# 📞 Contact List
 
->API de contatos, feita em java com Spring Boot e arquitetura em 3 camadas.
+> API de contatos desenvolvida em Java com Spring Boot, seguindo a arquitetura em 3 camadas.
 
 
-**camada: Cotroller**
-- resposável pelos endpoints disponibilizados da API, e a configuração deles(post, get, put, delete e params)
+## 🗂️ Arquitetura das Camadas
 
-**camada: Service**
-- responsável tratar das regras de negócio
+- **Controller**
+  - Responsável pelos endpoints da API e suas configurações (POST, GET, PUT, DELETE e parâmetros).
+- **Service**
+  - Centraliza as regras de negócio.
+- **Repository**
+  - Conexão e queries no banco de dados.
 
-**Camada: Repository**
-- responsável por conectar e realizar querys no banco de dados
 
-# Tecnologias utilizadas
-1. java
-2. Spring JPA
-3. Spring WEB
-3. Maven
-4. Banco de dados: H2 (banco de dados relacional em memória)
+## 🚀 Tecnologias Utilizadas
 
-# Práticas adotadas
-- SOLID
-- API REST
-- Injeção de dependências
-- Arquiterua de 3 camadas
+- **Java**
+- **Spring Boot**
+  - Spring Web
+  - Spring JPA
+- **Maven**
+- **Banco de Dados:** H2 (relacional e em memória)
 
-# API endpoints
->use acese http://localhost:8080/swagger-ui/index.html após fazer a build do projeto, para ter acesso a documentação web
-- Criar contato
 
+## 📌 Boas Práticas
+
+- Princípios **SOLID**
+- API **RESTful**
+- Injeção de Dependências
+- Arquitetura em **3 Camadas**
+
+
+## 📚 Documentação e Endpoints
+
+Acesse a documentação interativa [Swagger UI](http://localhost:8080/swagger-ui/index.html) após fazer build e rodar o projeto.
+
+### 🔹 Criar Contato
+
+```http
+POST /contacts
 ```
-http POST :8080/contacts
+```json
+{
+  "name": "nome de exemplo",
+  "phone": "99 99999-9999"
+}
+```
 
+
+### 🔹 Buscar Contato por ID
+
+```http
+GET /contacts/{id}
+```
+
+
+### 🔹 Atualizar Contato
+
+```http
+PUT /contacts
+```
+```json
+{
+  "id": 5,
+  "name": "nome exemplo",
+  "phone": "99 99999-9999"
+}
+```
+
+
+### 🔹 Deletar Contato
+
+```http
+DELETE /contacts/{id}
+```
+
+
+### 🔹 Listar Contatos por Nome
+
+```http
+GET /contacts?name=nome exemplo
+```
+
+
+### 🔹 Listar Todos os Contatos
+
+```http
+GET /contacts/all
+```
+
+### 🔹 Criar Contatos em Lote
+
+```http
+POST /contacts/batch
+```
+```json
 [
   {
-    "name": "nome de exemplo",
-    "phone": "99 99999-9999",
-  }
-]
-```
-
-- Buscar o contato por ID
-```
-http GET :8080/contacts/{id} 
-
-[]
-```
-
-- Atualizar contato
-```
-http PUT :8080/contacts/ 
-
-[
-  {
-    "id": 5,
-    "name": "nome exemplo ",
-    "phone": "99 99999-9999"
-  }
-]
-```
-
-- Deletar contato
-```
-http DELETE :8080/contacts/{id} 
-
-[]
-```
-
-- Listar todos os contados com mesmo nome
-```
-http GET :8080/contacts ? name={nome exemplo}
-
-[]
-```
-
-- Listar todos os contatos
-```
-http GET :8080/contacts/all
-
-[]
-```
-
-- Criar contatos em lote
-```
-http POST :8080/contacts/batch
-
-[
-  {
-    "name": "nome exemplo ",
+    "name": "nome exemplo",
     "phone": "99 99999-9999"
   },
   {
     "name": "nome exemplo 2",
-    "phone": "88 888888888"
+    "phone": "88 88888-8888"
   }
 ]
 ```
 
-- Deletar contatos em lote
+
+### 🔹 Deletar Contatos em Lote
+
+```http
+DELETE /contacts/delete-batch
 ```
-http DELETE :8080/contacts/delete-batch
-
-[
-    1,
-    2,
-    3
-]
+```json
+[1, 2, 3]
 ```
 
 
+## 💡 Observações
 
-
+- Todas as requisições devem ser feitas para `http://localhost:8080`.
+- Utilize o Swagger para testar e explorar os endpoints disponíveis.
